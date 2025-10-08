@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center h-screen">
+
+    <div class="bg-gray-800 p-8 rounded-3xl shadow-2xl w-[420px] border border-gray-700">
+        <form method="POST">
+            {% csrf_token %}
+
+            <!-- Wyświetlacz -->
+            <input type="text" name="expression" readonly value="{{ expression }}"
+                   class="w-full mb-6 text-right text-4xl p-4 rounded-xl bg-gray-700 text-white border border-gray-600 shadow-inner focus:outline-none font-mono"/>
+
+            <!-- Siatka przycisków -->
+            <div class="grid grid-cols-4 gap-4">
+                {% for button in "789/456*123-0C+=" %}
+                <button type="submit" name="button" value="{{ button }}"
+                        class="bg-gray-600 hover:bg-gray-500 active:bg-gray-400 text-white py-5 rounded-xl text-2xl font-semibold shadow-md transform hover:scale-105 transition-transform duration-100">
+                    {{ button }}
+                </button>
+                {% endfor %}
+            </div>
+
+            <!-- Stopka -->
+            <div class="text-center text-gray-400 text-sm mt-6 select-none">
+                🧮 Kalkulator Django — autor: Jakub
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
