@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://django-calculator-dfcgb8c7fch5bjdr.westeurope-01.azurewebsites.net/',
+]
 
 # Application definition
 
