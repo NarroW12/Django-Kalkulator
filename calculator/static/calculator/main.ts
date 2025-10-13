@@ -46,8 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   async function loadHistory() {
   const res = await fetch("/api/history/");
   const data = await res.json();
-
-  // zapewnia, że zawsze mamy tablicę do mapowania
   const historyList = Array.isArray(data.history) ? data.history : Array.isArray(data) ? data : [];
 
   if (historyDiv) {
