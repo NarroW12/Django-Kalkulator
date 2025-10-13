@@ -1,31 +1,7 @@
-.btn {
-  @apply bg-gray-600 hover:bg-gray-500 text-white text-lg sm:text-xl font-semibold py-3 rounded transition-all;
-}
-
-.btn.operator {
-  @apply bg-indigo-600 hover:bg-indigo-500;
-}
-
-.btn.clear {
-  @apply bg-red-600 hover:bg-red-500;
-}
-
-.btn.equals {
-  @apply bg-green-600 hover:bg-green-500;
-}
-
-.btn.history {
-  @apply bg-yellow-600 hover:bg-yellow-500;
-}
-
-/* Responsywność i animacja */
-#calculator {
-  transform: scale(1);
-  transition: transform 0.2s ease-in-out;
-}
-
-@media (max-width: 640px) {
-  #calculator {
-    transform: scale(0.9);
-  }
-}
+.btn {@apply bg-gray-600 hover:bg-gray-500 text-white text-lg sm:text-xl font-semibold py-3 rounded transition-all;}
+.btn.operator {@apply bg-indigo-600 hover:bg-indigo-500;}
+.btn.clear {@apply bg-red-600 hover:bg-red-500;}
+.btn.equals {@apply bg-green-600 hover:bg-green-500;}
+.btn.history {@apply bg-yellow-600 hover:bg-yellow-500;}
+#calculator {transform: scale(1);transition: transform 0.2s ease-in-out;}
+@media (max-width: 640px) {#calculator {transform: scale(0.9);}}

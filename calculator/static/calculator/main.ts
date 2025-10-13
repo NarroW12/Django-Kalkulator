@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const historyDiv = document.getElementById("history") as HTMLDivElement;
   const historyBtn = document.getElementById("showHistory") as HTMLButtonElement;
 
-  // wpisywanie cyfr i operatorów
   buttons.forEach((btn) => {
     btn.addEventListener("click", async () => {
       const val = btn.dataset.value!;
@@ -21,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // historia
   historyBtn.addEventListener("click", async () => {
     if (historyDiv.classList.contains("hidden")) {
       await loadHistory();
@@ -33,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function calculate(expression: string): Promise<string> {
     if (!expression) return "";
-
     const res = await fetch("/api/calculate/", {
       method: "POST",
       headers: {
@@ -42,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       body: JSON.stringify({ expression }),
     });
-
     const data = await res.json();
     return data.result ?? "Błąd";
   }
@@ -50,14 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
   async function loadHistory() {
     const res = await fetch("/api/history/");
     const data = await res.json();
-
     if (historyDiv) {
       historyDiv.innerHTML = data.history
         .map((h: { expression: string; result: string }) => `<div>${h.expression} = <b>${h.result}</b></div>`)
         .join("");
     }
   }
-
   function getCSRFToken(): string {
     const cookieValue = document.cookie
       .split("; ")
