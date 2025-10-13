@@ -44,14 +44,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function loadHistory() {
-    const res = await fetch("/api/history/");
-    const data = await res.json();
-    if (historyDiv) {
-      historyDiv.innerHTML = data.history
-        .map((h: { expression: string; result: string }) => `<div>${h.expression} = <b>${h.result}</b></div>`)
-        .join("");
-    }
+  const res = await fetch("/api/history/");
+  const data = await res.json();
+
+  // zapewnia, że zawsze mamy tablicę do mapowania
+  const historyList = Array.isArray(data.history) ? data.history : Array.isArray(data) ? data : [];
+
+  if (historyDiv) {
+    historyDiv.innerHTML = historyList.length
+      ? historyList
+          .map(
+            (h: { expression: string; result: string }) =>
+              `<div class="flex justify-between border-b border-gray-600 py-1">
+                 <span>${h.expression}</span>
+                 <b class="text-green-400">${h.result}</b>
+               </div>`
+          )
+          .join("")
+      : `<p class="text-gray-400 italic text-center">Brak historii...</p>`;
   }
+}
   function getCSRFToken(): string {
     const cookieValue = document.cookie
       .split("; ")
