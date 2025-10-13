@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "outDir": "calculator/static/calculator/",
+    "rootDir": "calculator/static/calculator/",
+    "esModuleInterop": true
+  },
+  "include": ["./calculator/static/calculator/*.ts"],
+  "exclude": ["./node_modules"]
+}
