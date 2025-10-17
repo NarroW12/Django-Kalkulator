@@ -11,10 +11,25 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_URL = 'static/'
+
+
+# To jest ścieżka do folderu, w którym Ty trzymasz swoje pliki (main.js, style.css)
+# BASE_DIR wskazuje na folder "Django-Kalkulator" (główny folder projektu)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# To jest folder, do którego Django zbierze WSZYSTKIE pliki statyczne
+# (z Twojego folderu i z panelu admina) na potrzeby produkcji.
+# WhiteNoise będzie serwować pliki właśnie stąd.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Opcjonalne, ale zalecane: optymalizacja dla WhiteNoise
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -46,6 +61,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
