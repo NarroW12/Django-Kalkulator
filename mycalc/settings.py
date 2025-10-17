@@ -19,9 +19,9 @@ STATIC_URL = 'static/'
 
 # To jest ścieżka do folderu, w którym Ty trzymasz swoje pliki (main.js, style.css)
 # BASE_DIR wskazuje na folder "Django-Kalkulator" (główny folder projektu)
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 
 # To jest folder, do którego Django zbierze WSZYSTKIE pliki statyczne
 # (z Twojego folderu i z panelu admina) na potrzeby produkcji.
@@ -40,7 +40,8 @@ SECRET_KEY = 'django-insecure-mpszmo*^cs$p&w81f4^=@_@ud#t-u*%%$8#3z=(g47n2@_c+8=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*',
+                 'https://django-calculator-dfcgb8c7fch5bjdr.westeurope-01.azurewebsites.net/']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://django-calculator-dfcgb8c7fch5bjdr.westeurope-01.azurewebsites.net',
