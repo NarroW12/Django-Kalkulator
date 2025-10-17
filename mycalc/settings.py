@@ -38,7 +38,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 SECRET_KEY = 'django-insecure-mpszmo*^cs$p&w81f4^=@_@ud#t-u*%%$8#3z=(g47n2@_c+8='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*',
                  'https://django-calculator-dfcgb8c7fch5bjdr.westeurope-01.azurewebsites.net/']
