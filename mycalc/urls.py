@@ -19,7 +19,7 @@ from django.urls import path
 from calculator import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/calculate/', views.calculate),
-    path('api/history/', views.history),
+    path('api/calculate/', views.calculate, name='calculate'),
+    path('api/history/', views.history, name='history'),
     path('', views.index, name='index'),
 ]
